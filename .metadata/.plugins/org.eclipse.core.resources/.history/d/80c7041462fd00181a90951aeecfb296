@@ -1,0 +1,79 @@
+package Project;
+import javax.swing.JOptionPane;
+import java.sql.*;
+
+public class CrudAPP {
+	 static String userid="root";
+	    static String url = "com.mysql.cj.jdbc.Driver";
+	   
+	    static Statement stmt;
+	    static PreparedStatement pstmt;
+	    static Connection con;
+
+	public static void main(String[] args) {
+		JOptionPane.showMessageDialog(null,"JDBC Programming showing Updation of Table Data");
+        int choice = -1;
+ 
+           do{
+            choice = getChoice();
+            if (choice != 0){
+                getSelected(choice);
+            }
+           }
+        while ( choice !=  0);
+            System.exit(0);
+}
+	public static int getChoice()
+    {
+        String choice;
+        int ch;
+        choice = JOptionPane.showInputDialog(null,
+        "1. Create Employees Table\n"+
+        "2. Create Products Table\n"+
+        "3. Insert data into Employees Table\n"+
+        "4. Insert data into Orders Table\n"+
+        "5. Retrieve data for Employees Table\n"+
+        "6. Retrieve data for Orders Table\n"+
+        "7. Update Employees Table\n"+
+        "8. Update Employees Table Using a Prepared Statement\n"+
+        "9. Update many records of Orders Table Using a Prepared Statement\n"+
+        "10. List the name of employees who bought CD'sn"+
+            "0. Exit\n\n"+
+            "Enter your choice");
+        ch = Integer.parseInt(choice);
+        return ch;
+    }
+	public static void getSelected(int choice){
+        if(choice==1){
+            createEmployees();
+        }
+        if(choice==2){
+            createOrders();
+        }
+        if(choice==3){
+            insertEmployees();
+        }
+        if(choice==4){
+            insertOrders();
+        }
+        if(choice==5){
+            retrieveEmployees();
+        }
+        if(choice==6){
+            retrieveOrders();
+        }
+        if(choice==7){
+            updateEmployees();
+        }
+        if(choice==8){
+            updateEmployeesPrepared();
+        }
+        if(choice==9){
+            updateOrdersPrepared();
+        }
+        if(choice==10){
+            dynamicQuery();
+        }
+    }
+
+}

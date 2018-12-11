@@ -1,0 +1,15 @@
+import java.sql.*;
+public class databaseconn {
+	public static void main(String args[]) {
+		System.out.println("*** MYsql databse Connection TEsting****");
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+		System.out.println("Class not found Exception:");
+		e.printStackTrace();
+		return;
+		}
+		System.out.println("MYSQL diver installed succesfully");
+	}
+
+}

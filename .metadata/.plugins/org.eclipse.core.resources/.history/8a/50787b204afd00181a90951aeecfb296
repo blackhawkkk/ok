@@ -1,0 +1,54 @@
+import java.sql.*;
+public class CreateTable1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		//install driver
+		System.out.println("*** MYsql databse Connection TEsting****");
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+		System.out.println("Class not found Exception:");
+		e.printStackTrace();
+		return;
+		}
+		System.out.println("MYSQL diver installed succesfully");
+		// make connection with dataabse
+		Connection con=null;
+		try {
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/javarocks","root","");
+				
+		} catch (SQLException e) {
+		System.out.println("Connection failed>..! PLease try again and check");
+		e.printStackTrace();
+		return;
+		}
+		if (con!=null) {
+			System.out.println("Successfull connection......!!!!");
+			
+		}else {
+			System.out.println("failed to require connection");
+		}
+		try {
+		//excute query
+		Statement stmt=con.createStatement();
+		String comm="create table Author (aid INTEGER(3),aname VARCHAR(20),addr VARCHAR(30))";
+		stmt.executeUpdate(comm);
+		System.out.println("Table created of Author");
+		String book="create table Book(bid INTEGER(3),bname VARCHAR(20),bprice INTEGER(30))";
+		stmt.executeUpdate(book);
+		System.out.println("Table created of BOok");
+		//close connection
+		stmt.close();
+		con.close();
+		
+		}catch(SQLException e) {
+			System.out.println("SQLEXception :"+e.getMessage());
+		}
+		
+		
+		
+	}
+
+}

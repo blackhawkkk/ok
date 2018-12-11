@@ -1,0 +1,54 @@
+package Project;
+import javax.swing.JOptionPane;
+import java.sql.*;
+
+public class CrudAPP {
+	 static String userid="root";
+	    static String url = "com.mysql.cj.jdbc.Driver";
+	    // String url = "jdbc:mySubprotocol:myDataSource"; ?
+	    static Statement stmt;
+	    static PreparedStatement pstmt;
+	    static Connection con;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		// craete diver install
+		
+		//create connection
+		
+		
+		//create employee
+		
+		
+		//create order
+		
+		
+		//insert employees
+		
+		
+		//insert orders
+		
+		
+		
+		//retrieve order
+		
+		
+		
+		//update employee
+		
+		
+		//update employee prepared
+		
+		
+		
+		//update order rpepared
+		
+		
+		
+		
+		
+		
+
+	}
+
+}

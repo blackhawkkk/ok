@@ -1,0 +1,61 @@
+import java.sql.*;
+public class insertionTABLE {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		//install driver
+				System.out.println("*** MYsql databse Connection TEsting****");
+				try {
+					Class.forName("com.mysql.cj.jdbc.Driver");
+				} catch (ClassNotFoundException e) {
+				System.out.println("Class not found Exception:");
+				e.printStackTrace();
+				return;
+				}
+				System.out.println("MYSQL diver installed succesfully");
+				// make connection with dataabse
+				Connection con=null;
+				try {
+					con=DriverManager.getConnection("jdbc:mysql://localhost:3306/javarocks","root","");
+						
+				} catch (SQLException e) {
+				System.out.println("Connection failed>..! PLease try again and check");
+				e.printStackTrace();
+				return;
+				}
+				if (con!=null) {
+					System.out.println("Successfull connection......!!!!");
+					
+				}else {
+					System.out.println("failed to require connection");
+				}
+			// Insertion record into table
+				try {
+					String insert1="insert into Author values(101,'Shubham','Baramati')";
+					Statement stmt=con.createStatement();
+					stmt.executeUpdate(insert1);
+					System.out.println("recorded succesfull");
+					
+					ResultSet rs=stmt.executeQuery("SELECT * FROM Author");
+					System.out.println("Aid\tAname\tAddreess");
+					while(rs.next()){
+						System.out.println(rs.getInt(1)+"\t");
+						System.out.println(rs.getString(2)+"\t");
+						System.out.println(rs.getString(3)+"\t");
+						
+					}
+					
+					stmt.close();
+					rs.close();
+					con.close();
+					
+				} catch (SQLException e) {
+					System.out.println("SQLEXception :"+e.getMessage());
+				}
+				
+				//Display record 
+			
+
+	}
+
+}
